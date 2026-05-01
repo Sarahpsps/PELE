@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pele — Analisador de Ingredientes</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- Decorações de fundo -->
+  <div class="bg-blob blob1"></div>
+  <div class="bg-blob blob2"></div>
+  <div class="bg-blob blob3"></div>
+
+  <div class="container">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">✦ pele</div>
+      <p class="tagline">descubra o que realmente está na sua skincare</p>
+    </header>
+
+    <!-- Card principal -->
+    <main class="card">
+      <h1 class="card-title">Analisador de <em>Ingredientes</em></h1>
+      <p class="card-subtitle">Cole os ingredientes do rótulo e descubra o score para o seu tipo de pele.</p>
+
+      <div class="form-group">
+        <label>Seu tipo de pele</label>
+        <div class="skin-selector">
+          <button class="skin-btn active" data-value="oleosa">🌿 Oleosa</button>
+          <button class="skin-btn" data-value="seca">🌵 Seca</button>
+          <button class="skin-btn" data-value="mista">⚖️ Mista</button>
+          <button class="skin-btn" data-value="sensivel">🌸 Sensível</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="ingredientes">Ingredientes do produto</label>
+        <textarea
+          id="ingredientes"
+          placeholder="Ex: Glycerin, Niacinamide, Salicylic Acid, Alcohol Denat., Parfum..."
+          rows="5"
+        ></textarea>
+      </div>
+
+      <!-- Upload de foto -->
+      <div class="form-group">
+        <label>Ou envie uma foto do rótulo</label>
+        <div class="upload-area" id="uploadArea">
+          <input type="file" id="fotoInput" accept="image/*" style="display:none"/>
+          <span class="upload-icon">📷</span>
+          <span class="upload-texto">Clique para enviar foto do rótulo</span>
+          <span class="upload-sub">JPG, PNG — o app lê os ingredientes automaticamente</span>
+        </div>
+      </div>
+
+      <button class="btn-analisar" id="btnAnalisar">
+        <span class="btn-text">Analisar produto</span>
+        <span class="btn-icon">→</span>
+      </button>
+    </main>
+
+    <!-- Resultado (oculto inicialmente) -->
+    <section class="resultado" id="resultado" style="display:none">
+
+      <div class="score-card" id="scoreCard">
+        <div class="score-label">score geral</div>
+        <div class="score-number" id="scoreNum">—</div>
+        <div class="score-bar-bg">
+          <div class="score-bar-fill" id="scoreBar"></div>
+        </div>
+        <div class="score-desc" id="scoreDesc"></div>
+      </div>
+
+      <div class="metricas">
+        <div class="metrica">
+          <span class="metrica-num" id="mReconhecidos">—</span>
+          <span class="metrica-label">reconhecidos</span>
+        </div>
+        <div class="metrica-divider"></div>
+        <div class="metrica">
+          <span class="metrica-num" id="mAlertas">—</span>
+          <span class="metrica-label">alertas</span>
+        </div>
+        <div class="metrica-divider"></div>
+        <div class="metrica">
+          <span class="metrica-num" id="mNaoEncontrados">—</span>
+          <span class="metrica-label">não reconhecidos</span>
+        </div>
+      </div>
+
+      <div id="alertasSection" style="display:none">
+        <h3 class="section-title">⚠️ Alertas encontrados</h3>
+        <div id="alertasList"></div>
+      </div>
+
+      <div id="detalhesSection" style="display:none">
+        <h3 class="section-title">📋 Ingredientes analisados</h3>
+        <div id="detalhesList"></div>
+      </div>
+
+      <div id="naoEncontraSection" style="display:none">
+        <h3 class="section-title">❓ Não reconhecidos</h3>
+        <p class="nao-encontrados-texto" id="naoEncontradosList"></p>
+      </div>
+
+    </section>
+
+    <footer class="footer">feito com 🌸 para peles brasileiras</footer>
+
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
