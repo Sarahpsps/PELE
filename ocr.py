@@ -4,8 +4,13 @@ import cv2
 import numpy as np
 import re
 
-# Caminho do Tesseract no Windows — não muda se instalou no local padrão
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+# Depois — detecta automaticamente o sistema operacional
+import os
+import platform
+
+if platform.system() == "Windows":
+    pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+# No Linux (servidor) o Tesseract já fica no PATH automaticamente
 
 def pre_processar_imagem(imagem_bytes: bytes) -> np.ndarray:
     """
